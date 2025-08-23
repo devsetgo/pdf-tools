@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/postgres
+{
+	"name": "PDF Tools",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"runArgs": [
+		"--init",
+		"--privileged",
+		"-v",
+		"/var/run/docker.sock:/var/run/docker.sock"
+	],
+	// "features": {
+	// 	"ghcr.io/devcontainers/features/node:1": {
+	// 		"nodeGypDependencies": true,
+	// 		"version": "18"
+	// 	},
+	// 	"ghcr.io/devcontainers-contrib/features/vue-cli:2": {
+	// 		"version": "latest"
+	// 	}
+	// },
+	"forwardPorts": [
+		5000
+	],
+	"postCreateCommand": "pip3 install --upgrade pip setuptools wheel && pip3 install -r requirements.txt",
+	// "postStartCommand": "",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+				"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+				"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest"
+			},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"donjayamanne.githistory",
+				"ecmel.vscode-html-css",
+				"hnw.vscode-auto-open-markdown-preview",
+				"kamikillerto.vscode-colorize",
+				"mikestead.dotenv",
+				"oderwat.indent-rainbow",
+				"wayou.vscode-todo-highlight"
+			]
+		}
+	}
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "vscode"
+}
