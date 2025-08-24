@@ -24,4 +24,9 @@ def main():
         )
 
 if __name__ == "__main__":
+    import time
+    start_time = time.time()
     main()
+    end_time = time.time()
+    duration = end_time - start_time
+    print(f"Processing time: {duration:.2f} seconds")
